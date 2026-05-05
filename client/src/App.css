@@ -1,0 +1,205 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f5f4f0;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+code, pre { font-family: 'Fira Code', 'Cascadia Code', monospace; }
+
+/* ── Layout ── */
+.app { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+
+.header { margin-bottom: 1.5rem; }
+.header h1 { font-size: 1.4rem; font-weight: 600; }
+.header p  { font-size: 0.85rem; color: #666; margin-top: 4px; }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+}
+.tab {
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #888;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s;
+}
+.tab.active { color: #1a1a1a; border-bottom-color: #534AB7; }
+.tab:hover  { color: #1a1a1a; }
+
+/* ── Cards ── */
+.card {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 10px;
+}
+.card.dashed { border-style: dashed; background: #fafaf8; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.card-title { font-size: 0.9rem; font-weight: 600; }
+.card-sub   { font-size: 0.72rem; color: #888; margin-top: 2px; }
+
+/* ── Grid ── */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+
+/* ── Buttons ── */
+.actions { display: flex; gap: 6px; }
+.btn {
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border: 1px solid #d4d0c8;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.1s;
+}
+.btn:hover       { background: #f0efe9; }
+.btn-danger      { color: #a32d2d; border-color: #f0b0b0; }
+.btn-danger:hover{ background: #fff0f0; }
+.btn-primary     { background: #534AB7; color: #fff; border-color: #534AB7; }
+.btn-primary:hover{ background: #3c3489; }
+
+/* ── Forms ── */
+.form-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.form-row label { font-size: 0.75rem; color: #777; min-width: 52px; }
+.form-row input,
+.form-row select {
+  flex: 1;
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border: 1px solid #d4d0c8;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+}
+.form-row input:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #534AB7;
+  box-shadow: 0 0 0 2px #534ab720;
+}
+
+/* ── Badges & chips ── */
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.badge-purple { background: #eeedfe; color: #3c3489; }
+.badge-teal   { background: #e1f5ee; color: #085041; }
+.badge-amber  { background: #faeeda; color: #633806; }
+.badge-blue   { background: #e6f1fb; color: #0c447c; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0efe9;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  margin: 2px;
+}
+.chip-remove {
+  cursor: pointer;
+  color: #999;
+  font-size: 14px;
+  line-height: 1;
+}
+.chip-remove:hover { color: #a32d2d; }
+
+/* ── Relation tags ── */
+.rel-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: #888;
+}
+.rel-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.one-many  { background: #e1f5ee; color: #085041; }
+.many-many { background: #eeedfe; color: #3c3489; }
+
+/* ── Info boxes ── */
+.info-box {
+  background: #e6f1fb;
+  border: 1px solid #b5d4f4;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: #0c447c;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+/* ── Section labels ── */
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+/* ── Mongo doc viewer ── */
+.mongo-doc {
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.72rem;
+  background: #f5f4f0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #555;
+  margin-top: 8px;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+.mongo-doc .key { color: #185fa5; }
+.mongo-doc .str { color: #3b6d11; }
+.mongo-doc .num { color: #854f0b; }
+.mongo-doc .ref { color: #534AB7; }
+
+/* ── Divider ── */
+hr { border: none; border-top: 1px solid #e8e6e1; margin: 14px 0; }
+
+/* ── Empty state ── */
+.empty { font-size: 0.8rem; color: #aaa; padding: 1rem; text-align: center; }
