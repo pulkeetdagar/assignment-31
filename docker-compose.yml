@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   mongo:
     image: mongo
@@ -18,12 +16,13 @@ services:
       - mongo
     environment:
       - MONGO_URI=mongodb://mongo:27017/a27db
+      - PORT=5000
 
   client:
     build: ./client
     container_name: client
     ports:
-      - "3001:3000"
+      - "3004:3000"
     depends_on:
       - server
 
