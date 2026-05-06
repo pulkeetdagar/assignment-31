@@ -1,26 +1,15 @@
 pipeline {
     agent any
-
     stages {
         stage('Build Docker Images') {
             steps {
-                sh 'docker-compose build'
+                sh 'docker\u002dcompose build'
             }
         }
-
         stage('Run Containers') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker\u002dcompose up -d'
             }
-        }
-    }
-
-    post {
-        failure {
-            echo 'Build failed!'
-        }
-        success {
-            echo 'Build succeeded!'
         }
     }
 }
