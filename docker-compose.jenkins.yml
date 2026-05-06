@@ -1,0 +1,22 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  server:
+    build: ./server
+    ports:
+      - "3500:3500"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/a27db
+      - PORT=3500
+    depends_on:
+      - mongo
+
+  client:
+    build: ./client
+    ports:
+      - "3002:80"
+    depends_on:
+      - server
