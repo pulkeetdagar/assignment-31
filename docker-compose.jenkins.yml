@@ -7,7 +7,7 @@ services:
   server:
     build: ./server
     ports:
-      - "3500:3500"
+      - "3501:3500"
     environment:
       - MONGO_URI=mongodb://mongo:27017/a27db
       - PORT=3500
