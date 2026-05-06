@@ -1,30 +1,15 @@
-services:
-  mongo:
-    image: mongo
-    container_name: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-  server:
-    build: ./server
-    container_name: server
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mongo
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/a27db
-      - PORT=5000
-
-  client:
-    build: ./client
-    container_name: client
-    ports:
-      - "3004:3000"
-    depends_on:
-      - server
-
-volumes:
-  mongo_data:
+pipeline {
+    agent any
+    stages {
+        stage('Build Docker Images') {
+            steps {
+                sh 'docker\u002dcompose build'
+            }
+        }
+        stage('Run Containers') {
+            steps {
+                sh 'docker\u002dcompose up -d'
+            }
+        }
+    }
+}
